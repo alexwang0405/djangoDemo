@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+
+{% block banner %}
+聯絡我們
+{% endblock %}
+
+{% block content %}
+
+<form action="" method="post" onsubmit="alert('留言已送出');">
+
+	<div>
+		<p>有事留言</p>
+	</div>
+	
+	<div>
+		<span>問題</span>
+		<input type="text" name="title" required/>
+	</div>
+	
+	<div>
+		<span>姓名</span>
+		<input type="text" name="name" required/>
+	</div>
+	
+	<div>
+		<span>內容</span>
+		<textarea name="title" rows="5" required></textarea>
+	</div>
+	<button type="submit">送出</button>
+
+</form>
+
+{% endblock %}

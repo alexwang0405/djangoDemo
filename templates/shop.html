@@ -1,0 +1,53 @@
+{% extends 'base.html' %}
+
+{% block banner %}
+我的商店
+{% endblock %}
+
+{% block content %}
+
+	<form action="" method="get">
+		品牌分類：
+		<input type="checkbox" id="acer" name="brand" value="Acer宏碁"/>
+		<label for="acer">Acer</label>
+		<input type="checkbox" id="asus" name="brand" value="Asus華碩"/>
+		<label for="asus">Asus</label>
+		<input type="checkbox" id="lenovo" name="brand" value="Lenovo聯想"/>
+		<label for="lenovo">Lenovo</label><br>
+		搜尋商品名稱：<input type="text" name="product"/><br>
+		價格：<input type="text" name="startp"/>到
+		<input type="text" name="endp"/>
+		<input type="submit" value="查詢"/>
+	</form>
+	<hr>
+		
+	<div class="info">
+		{% for plist in shop_list %}
+		<div class="infoarea">
+			<ul>
+				<li>商城：{{plist.webname}}</li>
+				<li><a href="{{plist.link}}" target="_blank"><img src="{{plist.photo}}"/></a></li>
+				<li>產品名稱：{{plist.title}}</li>
+				<li>價格：{{plist.price}}</li>
+			</ul>
+		</div>
+		{% endfor %}
+	</div>
+	
+	<div class="pagination">
+		<span class="page_link">
+			{% if shop_list.has_previous %}
+			<a href="?page={{ shop_list.previous_page_number }}&brand={{brand}}&startp={{startp}}&endp={{endp}}&product={{product}}"><img src="/static/images/pre.png" style="position: absolute; margin-left: -35px"/></a>
+			{% endif %}
+			
+			<span class="current">
+				頁數：{{ shop_list.number }} of {{ shop_list.paginator.num_pages }}
+			</span>
+			
+			{% if shop_list.has_next %}
+			<a href="?page={{shop_list.next_page_number}}&brand={{brand}}&startp={{startp}}&endp={{endp}}&product={{product}}"><img src="/static/images/next.png" style="position: absolute;"/></a>
+			{% endif %}
+		</span>
+	</div>
+
+{% endblock %}
