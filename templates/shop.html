@@ -8,11 +8,11 @@
 
 	<form action="" method="get">
 		品牌分類：
-		<input type="checkbox" id="acer" name="brand" value="Acer宏碁"/>
+		<input type="checkbox" id="acer" name="acer" value="Acer宏碁"/>
 		<label for="acer">Acer</label>
-		<input type="checkbox" id="asus" name="brand" value="Asus華碩"/>
+		<input type="checkbox" id="asus" name="asus" value="Asus華碩"/>
 		<label for="asus">Asus</label>
-		<input type="checkbox" id="lenovo" name="brand" value="Lenovo聯想"/>
+		<input type="checkbox" id="lenovo" name="lenovo" value="Lenovo聯想"/>
 		<label for="lenovo">Lenovo</label><br>
 		搜尋商品名稱：<input type="text" name="product"/><br>
 		價格：<input type="text" name="startp"/>到
@@ -37,7 +37,7 @@
 	<div class="pagination">
 		<span class="page_link">
 			{% if shop_list.has_previous %}
-			<a href="?page={{ shop_list.previous_page_number }}&brand={{brand}}&startp={{startp}}&endp={{endp}}&product={{product}}"><img src="/static/images/pre.png" style="position: absolute; margin-left: -35px"/></a>
+			<a href="?page={{ shop_list.previous_page_number }}&acer={{acer}}&asus={{asus}}&lenovo={{lenovo}}&startp={{startp}}&endp={{endp}}&product={{product}}"><img src="/static/images/pre.png" style="position: absolute; margin-left: -35px"/></a>
 			{% endif %}
 			
 			<span class="current">
@@ -45,7 +45,7 @@
 			</span>
 			
 			{% if shop_list.has_next %}
-			<a href="?page={{shop_list.next_page_number}}&brand={{brand}}&startp={{startp}}&endp={{endp}}&product={{product}}"><img src="/static/images/next.png" style="position: absolute;"/></a>
+			<a href="?page={{shop_list.next_page_number}}&acer={{acer}}&asus={{asus}}&lenovo={{lenovo}}&startp={{startp}}&endp={{endp}}&product={{product}}"><img src="/static/images/next.png" style="position: absolute;"/></a>
 			{% endif %}
 		</span>
 	</div>
