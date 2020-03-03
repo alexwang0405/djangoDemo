@@ -7,7 +7,7 @@
 {% block content %}
 
 <form action="" method="post" onsubmit="alert('留言已送出');">
-
+	{% csrf_token %}
 	<div>
 		<p>有事留言</p>
 	</div>

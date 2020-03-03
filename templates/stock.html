@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+{% block banner %}
+股票
+{% endblock %}
+
+{% block content %}
+
+<p>股票查詢</p>
+
+<form action="" method="post">
+	{% csrf_token %}
+	<span>股票名稱：</span>
+	<select name="stockname">
+		{% for name in names %}
+			<option>{{name.name}}({{name.no}})</option>
+		{% endfor %}
+	</select>
+	
+	<span>月份：</span>
+	<input type="month" name="date"/>
+	<input type="submit" value="查詢" onclick="getData()"/>
+</form>
+<hr>
+<div id="stockdetail">
+	<table>
+		<tr>
+			<td>日期</td>
+			<td>股票名稱</td>
+			<td>開盤價</td>
+			<td>收盤價</td>
+		</tr>
+		
+		{% for item in items %}
+		<tr>
+			<td>{{item.date}}</td>
+			<td>{{item.name}}</td>
+			<td>{{item.openprice}}</td>
+			<td>{{item.endprice}}</td>
+		</tr>
+		{% endfor %}
+	</table>
+</div>
+
+{% endblock %}

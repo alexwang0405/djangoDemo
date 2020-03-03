@@ -8,6 +8,17 @@
 	</title>
 	
 	<link rel="stylesheet" href="/static/css/index.css"/>
+	<script type="text/javascrpt">
+		function getData(){
+			var connect = new XMLHttpRequest();
+			connect.open("get", "localhost/stock/stockdetail.html");
+			connect.onload = function(){
+				var content = document.getElementById("stockdetail");
+				content.innerHTML = this.responseText;
+			}
+			connect.send();
+		}
+	</script>
 	
 </head>
 <body>

@@ -5,7 +5,7 @@ import datetime
 # Create your views here.
 
 def message(request):
-	if 'title in request.POST:
+	if 'title' in request.POST:
 		title=request.POST['title']
 		name=request.POST['name']
 		content=request.POST['content']
