@@ -40,6 +40,8 @@ INSTALLED_APPS = [
     'shop',
     'message',
     'stock',
+    'index',
+    'food',
 ]
 
 MIDDLEWARE = [
@@ -132,4 +134,5 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 STATICFILES_DIRS = (
 ("images", os.path.join(STATIC_ROOT, 'images').replace('\\','/')),
 ("css", os.path.join(STATIC_ROOT, 'css').replace('\\','/')),
+("js", os.path.join(STATIC_ROOT, 'js').replace('\\', '/')),
 )

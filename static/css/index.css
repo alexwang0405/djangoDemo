@@ -30,6 +30,21 @@ body{
 	margin: 0 auto;
 }
 
+.slide{
+	height: 400px;
+	width: 500px;
+	padding: 0;
+	margin: 100px auto 30px;
+}
+
+.slide img{
+	padding: 12px;
+	border: 1px solid #a9a9a9;
+	background-color: #a9a9a9;
+	width: 400px;
+	height: 350px;
+}
+
 .info{
 	clear: both;
 	margin: 0px auto 50px;
@@ -41,9 +56,9 @@ body{
 
 .info .infoarea{
 	float: left;
-	padding: 10px;
-	width: 23%;
-	height: 350px;
+	padding: 15px;
+	width: 22%;
+	height: 400px;
 	margin-bottom: 30px;
 }
 
@@ -51,10 +66,26 @@ body{
 	width: 100%;
 }
 
-.info p{
-	font-size: 28px;
-	padding-top: 20px;
-	font-weight: bold;
+.foodarea{
+	float: left;
+	padding: 15px;
+	width: 30%;
+	height: 300px;
+	margin-bottom: 20px;
+}
+
+.foodarea img{
+	width: 100%;
+}
+
+.foodarea span{
+	color: black;
+	overflow: hidden;
+}
+
+.foodarea p{
+	color: gray;
+	padding-left: 30%;
 }
 
 li{

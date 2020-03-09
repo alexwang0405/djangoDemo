@@ -21,10 +21,47 @@ def shop(request):
 		acer = request.GET.get('acer', '')
 		asus = request.GET.get('asus', '')
 		lenovo = request.GET.get('lenovo', '')
-		if startp == '' and endp == '':
-			shop_list = Shop.objects.filter(title__icontains=name, brand__in=[acer, asus, lenovo]).order_by('price')
+		
+		if acer=='' and asus=='' and lenovo=='':
+			if startp == '' and endp == '':
+				shop_list = Shop.objects.all().filter(title__icontains=name).order_by('price')
+			else:
+				shop_list = Shop.objects.all().filter(title__icontains=name, price__gte=startp, price__lte=endp).order_by('price')
+		elif acer!='' and asus=='' and lenovo=='':
+			if startp == '' and endp == '':
+				shop_list = Shop.objects.all().filter(title__icontains=name, brand=acer).order_by('price')
+			else:
+				shop_list = Shop.objects.all().filter(title__icontains=name, price__gte=startp, price__lte=endp, brand=acer).order_by('price')
+		elif acer=='' and asus!='' and lenovo=='':
+			if startp == '' and endp == '':
+				shop_list = Shop.objects.all().filter(title__icontains=name, brand=asus).order_by('price')
+			else:
+				shop_list = Shop.objects.all().filter(title__icontains=name, price__gte=startp, price__lte=endp, brand=asus).order_by('price')
+		elif acer=='' and asus=='' and lenovo!='':
+			if startp == '' and endp == '':
+				shop_list = Shop.objects.all().filter(title__icontains=name, brand=lenovo).order_by('price')
+			else:
+				shop_list = Shop.objects.all().filter(title__icontains=name, price__gte=startp, price__lte=endp, brand=lenovo).order_by('price')
+		elif acer!='' and asus!='' and lenovo=='':
+			if startp == '' and endp == '':
+				shop_list = Shop.objects.all().filter(title__icontains=name, brand__in=[acer,asus]).order_by('price')
+			else:
+				shop_list = Shop.objects.all().filter(title__icontains=name, price__gte=startp, price__lte=endp, brand__in=[acer,asus]).order_by('price')
+		elif acer!='' and asus=='' and lenovo!='':
+			if startp == '' and endp == '':
+				shop_list = Shop.objects.all().filter(title__icontains=name, brand__in=[acer,lenovo]).order_by('price')
+			else:
+				shop_list = Shop.objects.all().filter(title__icontains=name, price__gte=startp, price__lte=endp, brand__in=[acer,lenovo]).order_by('price')
+		elif acer=='' and asus!='' and lenovo!='':
+			if startp == '' and endp == '':
+				shop_list = Shop.objects.all().filter(title__icontains=name, brand__in=[lenovo,asus]).order_by('price')
+			else:
+				shop_list = Shop.objects.all().filter(title__icontains=name, price__gte=startp, price__lte=endp, brand__in=[lenovo,asus]).order_by('price')
 		else:
-			shop_list = Shop.objects.filter(title__icontains=name, price__gte=startp, price__lte=endp, brand__in=[acer, asus, lenovo]).order_by('price')
+			if startp == '' and endp == '':
+				shop_list = Shop.objects.all().filter(title__icontains=name).order_by('price')
+			else:
+				shop_list = Shop.objects.all().filter(title__icontains=name, price__gte=startp, price__lte=endp).order_by('price')
 	else :
 		shop_list = Shop.objects.all().order_by('price')
 	

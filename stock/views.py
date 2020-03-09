@@ -5,7 +5,7 @@ from .models import Stock
 
 def stock(request):
 	names = Stock.objects.values('name','no').distinct()
-	
+	name=''
 	if 'stockname' in request.POST:
 		stockname = request.POST['stockname']
 		name = stockname.split('(')[0]
@@ -19,6 +19,13 @@ def stock(request):
 			items = Stcok.objects.filter(name=name).order_by('id')
 	else:
 		items=[]
-	
-	content = {'names':names, 'items':items}
+	date=[]
+	openprice=[]
+	endprice=[]
+	for item in items:
+		d = int(item.date)
+		date.append(d%100)
+		openprice.append(item.openprice)
+		endprice.append(item.endprice)
+	content = {'names':names, 'items':items, 'stockname':name, 'openprice':openprice, 'endprice':endprice, 'date':date}
 	return render(request, 'stock.html', content)

@@ -4,6 +4,25 @@
 Django 資訊站
 {% endblock %}
 
+{% block extra_css %}
+<script src="/static/js/jquery-3.4.1.js"></script>
+<script src="/static/js/jquery.cycle.all.js"></script>
+<script>
+$(document).ready(function(){
+	$('.slide').cycle({
+		fx:'scrollLeft'
+	});
+});
+</script>
+{% endblock %}
+
 {% block content %}
-我是首頁
+<div class="slide">
+{% for data in allData %}
+
+<a href="{{data.link}}" target="_blank"><img src="{{data.image}}"/></a>
+
+{% endfor %}
+
+</div>
 {% endblock %}

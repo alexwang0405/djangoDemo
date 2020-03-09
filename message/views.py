@@ -11,6 +11,6 @@ def message(request):
 		content=request.POST['content']
 		dt=datetime.datetime.now()
 
-		Message.ogjects.create(title=title, name=name, content=content, datetime=dt)
+		Message.objects.create(title=title, name=name, content=content, datetime=dt)
 
 	return render(request, 'message.html')

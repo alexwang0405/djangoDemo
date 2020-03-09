@@ -6,28 +6,19 @@
 		{% block banner %}
 		{% endblock %}
 	</title>
-	
-	<link rel="stylesheet" href="/static/css/index.css"/>
-	<script type="text/javascrpt">
-		function getData(){
-			var connect = new XMLHttpRequest();
-			connect.open("get", "localhost/stock/stockdetail.html");
-			connect.onload = function(){
-				var content = document.getElementById("stockdetail");
-				content.innerHTML = this.responseText;
-			}
-			connect.send();
-		}
-	</script>
+	{% block extra_css %}
+	{% endblock %}
+	<link rel="stylesheet" type="text/css" href="/static/css/index.css"/>
 	
 </head>
 <body>
 	
 	<div id="menu">
-		<a href="/index/"><img src="/static/images/logo.png" style="float:left; margin-left=2%"/></a>
+		<a href="/"><img src="/static/images/logo.png" style="float:left; margin-left=2%"/></a>
 		<ul>
 			<li><a href="/shop/">比價商店</a></li>
 			<li><a href="/stock/">股票</a></li>
+			<li><a href="/food/">美食情報</a></li>
 			<li><a href="/message/">留言</a></li>
 		</ul>
 	

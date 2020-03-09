@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+{% block banner %}
+美食情報
+{% endblock %}
+
+{% block content %}
+<div class="info">
+	{% for data in allData %}
+	<div class="foodarea">
+		<ul>
+			<li><a href="{{data.link}}"><img src="{{data.image}}"/></a></li>
+			<li><a href="{{data.link}}"><span>{{data.title}}</span></a></li>
+			<li><p>| {{data.datetime}} |</p></li>
+		</ul>
+	</div>
+	{% endfor %}
+</div>
+{% endblock %}

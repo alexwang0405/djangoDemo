@@ -5,6 +5,9 @@
 
 {% block content %}
 
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script src="/static/js/highcharts.js"></script>
+
 <p>股票查詢</p>
 
 <form action="" method="post">
@@ -21,13 +24,14 @@
 	<input type="submit" value="查詢" onclick="getData()"/>
 </form>
 <hr>
-<div id="stockdetail">
-	<table>
+<div id="content" style="display: flex; flex-direction: row;">
+<div id="stockdetail" style="display:block;width:25%; flex-shrink:0; margin-left:10px;">
+	<table style="width: 80%; border-collapse: collapse; border: 1px groove black;">
 		<tr>
-			<td>日期</td>
-			<td>股票名稱</td>
-			<td>開盤價</td>
-			<td>收盤價</td>
+			<th>日期</th>
+			<th>股票名稱</th>
+			<th>開盤價</th>
+			<th>收盤價</th>
 		</tr>
 		
 		{% for item in items %}
@@ -40,5 +44,31 @@
 		{% endfor %}
 	</table>
 </div>
+<div id="chart" style="width: 60%; height: 400px; margin:0 auto; display: block; overflow: hidden; flex: auto;"></div>
+</div>
+
+<script language="JavaScript">
+	$(document).ready(function(){
+		var title = {text:'{{stockname}}股票走勢'};
+		var subtitle = {text:'資料來源：證券交易所'};
+		var xAxis = {categories:{{date}}};
+		var yAxis = {title:{text:'價格(元)'}, plotLines:[{value:0, width:1, color:'#808080'}]};
+		var tooltip = {valueSuffix:'元'};
+		var legend = {layout:'vertical', align:'right', verticalAlign:'middle', borderWidth:0};
+		var series = [{ name:'開盤價', data:{{openprice}} }, {name:'收盤價', data:{{endprice}}}];
+		
+		var json = {};
+		json.title = title;
+		json.subtitle = subtitle;
+		json.xAxis = xAxis;
+		json.yAxis = yAxis;
+		json.tooltip = tooltip;
+		json.legend = legend;
+		json.series = series;
+		
+		$('#chart').highcharts(json);
+		
+	});
+</script>
 
 {% endblock %}

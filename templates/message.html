@@ -6,28 +6,91 @@
 
 {% block content %}
 
+<style>
+#container{
+	margin: 0 auto;
+	padding: 0 25px;
+	max-width: 1220px;
+}
+.msg{
+	font-size: 1.75em;
+	padding: 0;
+	margin: 2em 0 0;
+}
+.title{
+	padding-bottom: 6px;
+	line-height: 32px;
+}
+
+.word{
+	float: left;
+}
+
+input{
+	width: 300px;
+	height: 35px;
+}
+
+.field-box{
+	max-width: 530px;
+	margin-left: 6em;
+}
+
+.field{
+	display: block;
+	width: 100%;
+	height: 38px;
+	border: 1px solid #ddd;
+	background: #fff;
+	margin-bottom: 0.3em;
+}
+
+textarea.field{
+	height: auto;
+	padding: 0.25em 0.5em;
+}
+
+.send{
+	padding: 4em 0;
+	letter-spacing: 1.5em;
+	text-align: center;
+	width: 500px;
+}
+
+</style>
+
+<div id="container">
 <form action="" method="post" onsubmit="alert('留言已送出');">
 	{% csrf_token %}
-	<div>
+	<div class="msg">
 		<p>有事留言</p>
 	</div>
 	
-	<div>
-		<span>問題</span>
-		<input type="text" name="title" required/>
+	<div class="title">
+		<span class="word">問題</span>
+		<div class="field-box">
+		<input type="text" name="title" required class="field"/>
+		</div>
 	</div>
 	
-	<div>
-		<span>姓名</span>
-		<input type="text" name="name" required/>
+	<div class="title">
+		<span class="word">姓名</span>
+		<div class="field-box">
+		<input type="text" name="name" required class="field"/>
+		</div>
 	</div>
 	
-	<div>
-		<span>內容</span>
-		<textarea name="title" rows="5" required></textarea>
+	<div class="title">
+		<span class="word">內容</span>
+		<div class="field-box">
+		<textarea name="content" rows="5" required class="field"></textarea>
+		</div>
 	</div>
-	<button type="submit">送出</button>
+	
+	<div class="send">
+	<button type="submit" style="background-image: url('/static/images/send.png'); width: 150px; height:70px"></button>
+	</div>
 
 </form>
-
+</div>
 {% endblock %}
