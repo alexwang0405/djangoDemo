@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     'stock',
     'index',
     'food',
+    'book',
 ]
 
 MIDDLEWARE = [

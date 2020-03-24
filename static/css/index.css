@@ -88,6 +88,46 @@ body{
 	padding-left: 30%;
 }
 
+.info .bookarea{
+	float: left;
+	padding: 15px;
+	width: 20%;
+	height: 400px;
+	margin-bottom: 30px;
+}
+
+.info .bookarea img{
+	width: 100%;
+}
+
+.bookarea span{
+	color: black;
+	overflow: hidden;
+}
+
+.main{
+	display: flex;
+	flex-direction: row;
+}
+
+.aside{
+	display: block;
+	width: 10%;
+	flex-shrink: 0;
+	border-right: 1px solid #a9a9a9;
+	padding-left: 0px;
+}
+
+.aside input[type="submit"]{
+	padding: 5px 15px;
+	margin: 5px 0;
+	background: #ccc;
+	border: 0 none;
+	cursor: pointer;
+	-webkit-border-radius: 5px;
+	border-radius: 5px;
+}
+
 li{
 	list-style-type: none;
 }

@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+{% block banner %}
+書籍
+{% endblock %}
+
+{% block content %}
+
+<div class="main">
+
+<div class="aside">
+	
+	<ul>
+		<li><p>書籍分類</p></li>
+		{% for item in items %}
+		
+		<li><form action="" method="get">
+			<input type="submit" value="{{item.kind}}" name="kind"/>
+		</form></li>
+		
+		{% endfor %}
+	</ul>
+</div>
+
+<div class="info">
+	{% for data in allData %}
+	<div class="bookarea">
+		<ul>
+			<li><a href="{{data.link}}" target="_blank"><img src="{{data.image}}"/></a></li>
+			<li><a href="{{data.link}}" target="_blank"><span>{{data.title}}</span></a></li>
+			<li><p>優惠價:{{data.price}}</p></li>
+		</ul>
+	</div>
+	{% endfor %}
+</div>
+
+</div>
+
+{% endblock %}
